@@ -15,7 +15,7 @@ $(document).on("click", "#start-over", function () {
 
 });
 
-$(document).on("click", ".answer-button", function (e) {
+$(document).on("click", ".ansbutton", function (e) {
     game.clicked(e);
 });
 
@@ -100,7 +100,11 @@ var game = {
 
         for (var i = 0; i < questions[game.currentQuestions].answers.length; i++) {
 
-            $('#subwrapper').append('<input type= "radio" class="ansButton" id="button-' + i + 'answers' + questions[game.currentQuestions].answers[i] + '">' + questions[game.currentQuestions].answers[i] + '</input>');
+            // $('#subwrapper').html('<h2>' + questions[game.currentQuestions].questions + '</h2>');
+            // for (var i = 0; i < questions[game.currentQuestions].answers.length; i++) {
+            //     $('#subwrapper').append('<input type= "radio" class="ansButton" id="button-' + i + 'answers' + questions[game.currentQuestions].answers[i] + '">' + questions[game.currentQuestions].answers[i] + ' name="radButton" </input>');
+           
+            $('#subwrapper').append('<button class=" ansButton" id="button- '+i+' " data-name="'+ questions[game.currentQuestions].answers[i] + '">' + questions[game.currentQuestions].answers[i] + '</button>');
         }
     },
     nextQuestion: function () {
@@ -185,7 +189,7 @@ var game = {
 
 
 
-
+// $('#subwrapper').append('<input type= "radio" class="ansButton" id="button-' + i + 'answers' + questions[game.currentQuestions].answers[i] + '">' + questions[game.currentQuestions].answers[i] + '</input>');
 
 
 
