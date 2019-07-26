@@ -1,7 +1,7 @@
 
 
 #bg {
-    background-image: url("bg.jpg");
+    /* background-image: url("bg.jpg"); */
     height: auto;
     width: 90%;
     background-position: center;
@@ -20,7 +20,7 @@
     z-index: 100;
     position: absolute;
     color: rgb(32, 4, 8);
-    font-size: 36px;
+    font-size: 30px;
     font-weight: bold;
     font-family: Arial, Helvetica, sans-serif;
     left: 300px;

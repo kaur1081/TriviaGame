@@ -8,7 +8,22 @@ $('#start').on('click', function () {
     $('#start').remove();
     game.loadQuestions();
 })
-var timer
+var timer;
+
+$(document).on("click", "#start-over", function () {
+    game.reset();
+
+});
+
+$(document).on("click", ".answer-button", function (e) {
+    game.clicked(e);
+});
+
+$(document).on("click", "#start", function () {
+    $("#sub-wrapper").prepend("<h2>Time Remaining: <span id='counter-number'>20</span> Seconds</h2>");
+    // game.loadQuestion();
+});
+
 
 var questions = [{
     questions: " When does Mary Poppins say she will leave the Banks’ house?",
@@ -66,7 +81,7 @@ var questions = [{
 var game = {
     questions: questions,
     currentQuestions: 0,
-    counter: 25,
+    counter: 20,
     incorrect: 0,
     correct: 0,
 
@@ -81,14 +96,16 @@ var game = {
     },
     loadQuestions: function () {
         timer = setInterval(game.countdown, 1000);
-        $('#subwrapper').html('<h2>' + questions[game.currentQuestions].questions + '</h2>')
+        $('#subwrapper').html('<h2>' + questions[game.currentQuestions].questions + '</h2>');
+
         for (var i = 0; i < questions[game.currentQuestions].answers.length; i++) {
-            $('#subwrapper').append('<input type= "radio" name="ansButton" value =' + questions[game.currentQuestions].answers[i] + '></input>');
+
+            $('#subwrapper').append('<input type= "radio" class="ansButton" id="button-' + i + 'answers' + questions[game.currentQuestions].answers[i] + '">' + questions[game.currentQuestions].answers[i] + '</input>');
         }
     },
     nextQuestion: function () {
-        game.counter = 25;
-        $("#counterNumber").text(game.counter);
+        game.counter = 20;
+        $("#counterNumber").html(game.counter);
         game.currentQuestions++;
         game.loadQuestions();
 
@@ -125,9 +142,11 @@ var game = {
     },
 
     answeredCorrectly: function () {
+        console.log("you got it!");
         clearInterval(timer);
         game.correct++;
         $("#subwrapper").html("<h2>Correct!</h2>");
+
         $("#subwrapper").append("<img src='" + questions[game.currentQuestion].image + "' />");
 
         if (game.currentQuestion === questions.length - 1) {
@@ -138,9 +157,10 @@ var game = {
         }
     },
     answeredIncorrectly: function () {
+        console.log("oops!");
         clearInterval(timer);
         game.incorrect++;
-        $("#subwrapper").html("<h2>Correct!</h2>");
+        $("#subwrapper").html("<h2>You got it wrong!</h2>");
         $("#subwrapper").append("<img src='" + questions[game.currentQuestion].image + "' />");
 
         if (game.currentQuestion === questions.length - 1) {
@@ -162,20 +182,6 @@ var game = {
     }
 
 };
-    $(document).on("click", "#start-over", function() {
-        game.reset();
-    
-    });
-
-$(document).on("click", ".answer-button", function (e) {
-    game.clicked(e);
-});
-
-$(document).on("click", "#start", function () {
-    $("#sub-wrapper").prepend("<h2>Time Remaining: <span id='counter-number'>30</span> Seconds</h2>");
-    game.loadQuestion();
-});
-
 
 
 
