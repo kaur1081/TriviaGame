@@ -1,6 +1,6 @@
 
 
-#bg {
+body {
     /* background-image: url("bg.jpg"); */
     height: auto;
     width: 100%;
@@ -11,7 +11,7 @@
     margin-right: 0px  ;
     padding:0px;
     opacity: 0.6;
-    /* z-index: -1; */
+    z-index: -1;
   }
   h1{
     font-family: 'Pacifico', cursive;

@@ -15,7 +15,7 @@ $(document).on("click","#start-over", function () {
 
 });
 
-$(document).on("click",'.ansbutton', function(e) {
+$(document).on("click",'.ansButton', function(e) {
     game.clicked(e);
 });
 
@@ -25,12 +25,14 @@ $(document).on("click", "#start", function () {
 });
 
 
-var questions = [{
+var questions = [
+    {
     questions: " When does Mary Poppins say she will leave the Banks’ house?",
     answers: ["When the Wind Changes", "At 12:00pm", "When bert comes", "When she wants to"],
     correctAnswers: "When the Wind Changes",
     image: "assets/images/flyingmp.png"
-}, {
+    }, 
+    {
     questions: "What animal does the sultan’s throne resemble in Aladdin?",
     answers: ["A cobra", " An elephant", "A Monkey", "A tiger"],
     correctAnswers: "An elephant",
@@ -132,7 +134,7 @@ var game = {
     },
     clicked: function (e) {
         clearInterval(timer);
-        if ($(e.target).data("name")==questions[game.currentQuestions].correctAnswers) {
+        if (e.target.dataset.name===questions[game.currentQuestions].correctAnswers) {
             game.answeredCorrectly();
         }
         else {
@@ -145,8 +147,8 @@ var game = {
         clearInterval(timer);
         game.correct++;
         $("#subwrapper").html("<h2>Correct Answer!</h2>");
-        $("#subwrapper").append("<img src='" + questions[game.currentQuestion].image + "' />");
-        if (game.currentQuestion === questions.length - 1) {
+        $("#subwrapper").append("<img src='" + questions[game.currentQuestions].image + "' />");
+        if (game.currentQuestions === questions.length - 1) {
             setTimeout(game.results, 5000);
         }
         else {
@@ -158,18 +160,16 @@ var game = {
         clearInterval(timer);
         game.incorrect++;
         $("#subwrapper").html("<h2>You got it wrong!</h2>");
-        $("#subwrapper").append("<img src='" + questions[game.currentQuestion].image + "' />");
+        $("#subwrapper").append("<img src='" + questions[game.currentQuestions].image + "' />");
 
-        if (game.currentQuestion === questions.length - 1) {
+        if (game.currentQuestions === questions.length - 1) {
             setTimeout(game.results, 5000);
         }
         else {
             setTimeout(game.nextQuestion, 5000);
         }
     },
-    answeredIncorrectly: function () {
 
-    },
     reset: function () {
         game.currentQuestions = 0;
         game.counter = counterNumber;
@@ -180,9 +180,6 @@ var game = {
 
 };
 
-
-
-// $('#subwrapper').append('<input type= "radio" class="ansButton" id="button-' + i + 'answers' + questions[game.currentQuestions].answers[i] + '">' + questions[game.currentQuestions].answers[i] + '</input>');
 
 
 
