@@ -10,12 +10,12 @@ $('#start').on('click', function () {
 })
 var timer;
 
-$(document).on("click", "#start-over", function () {
+$(document).on("click","#start-over", function () {
     game.reset();
 
 });
 
-$(document).on("click", ".ansbutton", function (e) {
+$(document).on("click",'.ansbutton', function(e) {
     game.clicked(e);
 });
 
@@ -39,7 +39,7 @@ var questions = [{
     questions: "In Toy Story, what game does the slinky play?",
     answers: ["Cards", "Catch", "Chess", "Checkers"],
     correctAnswers: "Checkers",
-    image: "assets/images/checkers toy-story-01.jpg"
+    image: "assets/images/ts.gif"
 }, {
     questions: "In Mary Poppins, what animal was on the end of Mary Poppins’ umbrella that spoke?",
     answers: ["Penguin", "Parrot", "Pegion", "Puffin"],
@@ -97,14 +97,8 @@ var game = {
     loadQuestions: function () {
         timer = setInterval(game.countdown, 1000);
         $('#subwrapper').html('<h2>' + questions[game.currentQuestions].questions + '</h2>');
-
         for (var i = 0; i < questions[game.currentQuestions].answers.length; i++) {
-
-            // $('#subwrapper').html('<h2>' + questions[game.currentQuestions].questions + '</h2>');
-            // for (var i = 0; i < questions[game.currentQuestions].answers.length; i++) {
-            //     $('#subwrapper').append('<input type= "radio" class="ansButton" id="button-' + i + 'answers' + questions[game.currentQuestions].answers[i] + '">' + questions[game.currentQuestions].answers[i] + ' name="radButton" </input>');
-           
-            $('#subwrapper').append('<button class=" ansButton" id="button- '+i+' " data-name="'+ questions[game.currentQuestions].answers[i] + '">' + questions[game.currentQuestions].answers[i] + '</button>');
+        $('#subwrapper').append('<button class="ansButton" id="button- '+i+' " data-name="'+ questions[game.currentQuestions].answers[i] + '">' + questions[game.currentQuestions].answers[i] +'</button>');
         }
     },
     nextQuestion: function () {
@@ -116,28 +110,29 @@ var game = {
     },
     timesUp: function () {
         clearInterval(timer);
+        // Game.unAnswered++
         $("#counterNumber").text(game.counter);
         $("#subwrapper").html("<h2>Out of time!</h2>");
         $("#subwrapper").append("<h3>The correct answer was " + questions[game.currentQuestions].correctAnswers + "</h3> ");
         $("#subwrapper").append("<img src='" + questions[game.currentQuestions].image + "'/>");
         if (game.currentQuestions === questions.length - 1) {
-            setTimeout(game.results, 3000);
+            setTimeout(game.results, 5000);
         } else {
-            setTimeout(game.nextQuestion, 3000);
+            setTimeout(game.nextQuestion, 5000);
         }
     },
     results: function () {
         clearInterval(timer);
-        $("#subwrapper").html("<h2> Wow! </h2>");
+        $("#subwrapper").html("<h2> All Done! </h2>");
         $("#counterNumber").text(game.counter);
         $("#subwrapper").append("<h3>Correct Answers: " + game.correct + "</h3>");
         $("#subwrapper").append("<h3>Incorrect Answers: " + game.incorrect + "</h3>");
         $("#subwrapper").append("<h3>Unanswered: " + (questions.length - (game.incorrect + game.correct)) + "</h3>");
-        $("#subwrapper").append("<br><button id='start-over'>Start Over?</button>");
+        $("#subwrapper").append("<br><button id='start-over'>Start Over</button>");
     },
     clicked: function (e) {
         clearInterval(timer);
-        if ($(e.target).val() === questions[game.currentQuestions].correctAnswers) {
+        if ($(e.target).data("name")==questions[game.currentQuestions].correctAnswers) {
             game.answeredCorrectly();
         }
         else {
@@ -149,15 +144,13 @@ var game = {
         console.log("you got it!");
         clearInterval(timer);
         game.correct++;
-        $("#subwrapper").html("<h2>Correct!</h2>");
-
+        $("#subwrapper").html("<h2>Correct Answer!</h2>");
         $("#subwrapper").append("<img src='" + questions[game.currentQuestion].image + "' />");
-
         if (game.currentQuestion === questions.length - 1) {
-            setTimeout(game.results, 3000);
+            setTimeout(game.results, 5000);
         }
         else {
-            setTimeout(game.nextQuestion, 3000);
+            setTimeout(game.nextQuestion, 5000);
         }
     },
     answeredIncorrectly: function () {
@@ -168,10 +161,10 @@ var game = {
         $("#subwrapper").append("<img src='" + questions[game.currentQuestion].image + "' />");
 
         if (game.currentQuestion === questions.length - 1) {
-            setTimeout(game.results, 3000);
+            setTimeout(game.results, 5000);
         }
         else {
-            setTimeout(game.nextQuestion, 3000);
+            setTimeout(game.nextQuestion, 5000);
         }
     },
     answeredIncorrectly: function () {
