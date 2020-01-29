@@ -119,10 +119,10 @@ var game = {
         $("#subwrapper").html("<h2>Out of time!</h2>");
         $("#subwrapper").append("<h3>The correct answer was " + questions[game.currentQuestions].correctAnswers + "</h3> ");
         $("#subwrapper").append("<img src='" + questions[game.currentQuestions].image + "'/>");
-        if (game.currentQuestions === questions.length - 1) {
-            setTimeout(game.results, 5000);
+        if (game.currentQuestions === questions.length -1) {
+            setTimeout(game.results, 3000);
         } else {
-            setTimeout(game.nextQuestion, 5000);
+            setTimeout(game.nextQuestion, 3000);
         }
     },
     results: function () {
