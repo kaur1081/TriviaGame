@@ -10,7 +10,7 @@ In this project when you start ansewring the questions timer countdown start
 It is a questionare so you can answer on spot selecting choices
 
 ## Screenshots
-![ Trivia! ]()
+![ Trivia! ](https://github.com/kaur1081/TriviaGame/blob/master/assets/images/disney.jpg)
 
 ## Technologies used
 
