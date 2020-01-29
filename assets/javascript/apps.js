@@ -151,10 +151,10 @@ var game = {
         $("#subwrapper").html("<h2>Correct Answer!</h2>");
         $("#subwrapper").append("<img src='" + questions[game.currentQuestions].image + "' />");
         if (game.currentQuestions === questions.length - 1) {
-            setTimeout(game.results, 5000);
+            setTimeout(game.results, 3000);
         }
         else {
-            setTimeout(game.nextQuestion, 5000);
+            setTimeout(game.nextQuestion, 3000);
         }
     },
     answeredIncorrectly: function () {
@@ -165,10 +165,10 @@ var game = {
         $("#subwrapper").append("<img src='" + questions[game.currentQuestions].image + "' />");
 
         if (game.currentQuestions === questions.length - 1) {
-            setTimeout(game.results, 5000);
+            setTimeout(game.results, 3000);
         }
         else {
-            setTimeout(game.nextQuestion, 5000);
+            setTimeout(game.nextQuestion, 3000);
         }
     },
 
