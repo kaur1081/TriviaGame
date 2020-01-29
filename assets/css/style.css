@@ -1,15 +1,19 @@
 
 
 body {
-    background-image: url("../images/bg.jpg");
+    background-image: url("../images/maxresdefault.jpg") ;
+    background-repeat: no-repeat;
+    background-size: cover;
+    
   }
 
   h1{
     font-family: 'Pacifico', cursive;
   }
   #wrapper{
-    background-color: rgba(252, 253, 253, 0.979);
-    width: 600px;
+    background-color: rgba(101, 184, 223, 0.979);
+    width: 500px;
+    float: left;
     font-family: 'Courgette', cursive;
     margin:auto;
     margin-top: 100px;
